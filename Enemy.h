@@ -8,6 +8,7 @@ public:
 	int GetSpeedY() { return speedY_; };
 	int GetRadius() { return radius_; };
 	bool isAlive_;
+	void resetdata(int posX, int posY, int speedX, int speedY);
 	void SetSpeed(int x, int y);
 	void SetPosition(int x, int y);
 	/// <summary>

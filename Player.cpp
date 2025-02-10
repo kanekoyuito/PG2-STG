@@ -48,6 +48,13 @@ void Player::Update(char* keys, char* preKeys){
 	}
 
 }
+void Player::resetdata(int posX, int posY, int speedX, int speedY){
+	posX_ = posX;
+	posY_ = posY;
+	speedX_ = speedX;
+	speedY_ = speedY;
+	radius_ = 8;
+}
 void Player::Draw(){
 	//player描画処理
 	bullet_->Draw();

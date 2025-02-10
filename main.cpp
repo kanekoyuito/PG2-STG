@@ -21,7 +21,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	char keys[256] = { 0 };
 	char preKeys[256] = { 0 };
 
-	Player* player = new Player(300, 400, 10, 10);
+	Player* player = new Player(400, 300, 10, 10);
 	Enemy* enemy = new Enemy(100, 100, 3, 3);
 
 	int currentSceen = TITLE;
@@ -43,6 +43,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case TITLE:
 			if (keys[DIK_J]){
 				currentSceen = PLAY;//シーンをPLAY
+				player->resetdata(400, 300, 10, 10);
+				enemy->resetdata(100,100,3,3);
 			}
 			break;
 		case PLAY:
@@ -58,6 +60,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				enemy->isAlive_ = false;
 				currentSceen = TITLE;
 				if (currentSceen==TITLE){
+					//初期化
+					player->bullet_->bulletPosX_ = player->GetPosX();
+					player->bullet_->bulletPosY_ = player->GetPosY();
+					player->bullet_->bulletIsAlive_ = 0;
+					enemy->isAlive_ = true;
+				}
+			}
+			float dist2X = (float)enemy->GetPosX() - player->GetPosX();
+			float dist2Y = (float)enemy->GetPosY() - player->GetPosY();
+			float dist2 = (dist2X * dist2X) + (dist2Y * dist2Y);
+			int radius2 = enemy->GetRadius() + player->bullet_->bulletRadius_;
+			if (dist2 <= radius2 * radius2) {
+				enemy->isAlive_ = false;
+				currentSceen = TITLE;
+				if (currentSceen == TITLE) {
 					//初期化
 					player->bullet_->bulletPosX_ = player->GetPosX();
 					player->bullet_->bulletPosY_ = player->GetPosY();

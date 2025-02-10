@@ -15,6 +15,7 @@ public:
 	/// 更新
 	/// </summary>
 	void Update(char* keys, char* preKeys);
+	void resetdata(int posX, int posY, int speedX, int speedY);
 
 	/// <summary>
 	/// 描画

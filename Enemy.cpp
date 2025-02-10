@@ -10,6 +10,16 @@ Enemy::Enemy(int posX, int posY, int speedX, int speedY){
 	isAlive_ = true;
 }
 
+void Enemy::resetdata(int posX, int posY, int speedX, int speedY)
+{
+	posX_ = posX;
+	posY_ = posY;
+	speedX_ = speedX;
+	speedY_ = speedY;
+	radius_ = 20;
+	isAlive_ = true;
+}
+
 void Enemy::SetSpeed(int x, int y){
 	posX_ = x;
 	posY_ = y;
